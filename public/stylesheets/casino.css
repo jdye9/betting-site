@@ -1,0 +1,171 @@
+.casino {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2rem;
+    margin: 1rem 1rem 1rem 1rem;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Sniglet', cursive;
+    border-radius: 12px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,.2);
+    color: pink;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.casino-header {
+    background-color: pink;
+    border-radius: 12px;
+    font-size: 40px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,.2);
+    width: 80%;
+    padding: 1rem;
+    color: white;
+}
+
+.casino-current {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    gap: 5%;
+    justify-content: space-between;
+}
+
+.casino-game {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+    border-radius: 12px;
+    font-size: 25px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,.2);
+    padding: 1rem;
+    color: white;
+    width: 45%;
+    height: 45%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.current-stats {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+    border-radius: 12px;
+    font-size: 25px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,.2);
+    padding: 1rem;
+    color: white;
+    width: 45%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-num {
+    background-color: white; 
+    color: black;
+    width: 100%;
+}
+
+.bet-button {
+    border: 0; 
+    font-family: 'Sniglet', cursive; 
+    background-color: white;
+    font-size: 25px; 
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.bet-input {
+    width: 100%; 
+    border: 0; 
+    font-size: 25px; 
+    font-family: 'Sniglet', cursive;
+}
+
+.historical-stats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: pink;
+    border-radius: 12px;
+    font-size: 25px;
+    color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.stat-h {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 28%;
+}
+
+.stat-v {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100%;
+}
+
+.casino-past {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    border-radius: 12px;
+    background-color: pink;
+    font-size: 25px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,.2);
+    color: white;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.panel-header {
+    background-color: white;
+    color: black;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.game-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    padding: 0.1rem;
+    height: 100%;
+    gap: 25px;
+    margin: 0;
+}
+
+form {
+    width: 100%;
+}
+
+li {
+    width: 100%;
+}
+
+input {
+    padding: 0;
+}
+
+.submit {
+    border: 0; 
+    font-family: 'Sniglet', cursive; 
+    background-color: pink;
+    color: white;
+    font-size: 25px; 
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

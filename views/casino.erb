@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/stylesheets/casino.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="casino">
+            <div class="casino-header">
+               Account: <%= session[:user].username %>
+            </div>
+            <div class="casino-current">
+                <div class="casino-game">
+                    <div class="panel-header">Game:</div>
+                    <span style="font-size: 20px;"> Place bet on die roll (1 -> 6)<br>Double your money!</span>
+                    <form action="/casino" method="post">
+                        <ul class="game-list">
+                            <li>Bet Amount:<input class="bet-input" type="text" name="money" required></li>
+                            <li>Choose Number:<input class="bet-input" type="text" name="side" required></li>
+                            <li><input class="bet-button" type="submit" name="submit" value="Place Bet"></li>
+                        </ul>
+                    </form>
+                    <% if session[:winmessage] %>
+                        <p style="color: green; font-family: 'Sniglet', cursive; text-align: center; font-size: 20px;"><%= session[:winmessage] %></p>
+                        <% session[:winmessage] = nil %>
+                    <%end %>
+                    <% if session[:lossmessage] %>
+                        <p style="color: red; font-family: 'Sniglet', cursive; text-align: center; font-size: 20px;"><%= session[:lossmessage] %></p>
+                        <% session[:lossmessage] = nil %>
+                    <%end %>
+                </div>
+                <div class="current-stats">
+                    <div class="panel-header">Current Session:</div>
+                    <div class="stat-v">Total Winnings: <div class="stat-num">$<%=session[:won].to_i%></div></div>
+                    <div class="stat-v">Total Losses: <div class="stat-num">$<%=session[:lost].to_i%></div></div>
+                    <div class="stat-v">Total Profit: <div class="stat-num">$<%=session[:won].to_i - session[:lost].to_i%></div></div>
+                </div>
+            </div>
+            <div class="casino-past">
+                <div class="panel-header">Account History:</div>
+                <div class="historical-stats">
+                    <div class="stat-h">Total Winnings: <div class="stat-num">$<%= session[:won].to_i + @winnings%></div></div>
+                    <div class="stat-h">Total Losses: <div class="stat-num">$<%= session[:lost].to_i + @losses%></div></div>
+                    <div class="stat-h">Total Profit: <div class="stat-num">$<%= session[:won].to_i - session[:lost].to_i + @profit%></div></div>
+                </div>
+            </div>
+            <div>
+            <form name="logout" method="post" action="/">
+                <input class="submit" type="submit" name="submit" value="Log Out">
+            </form>
+            </div>
+        </div>
+    </body>
+</html>
