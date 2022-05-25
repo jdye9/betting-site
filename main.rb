@@ -24,8 +24,35 @@ get '/signup' do
     erb :signup
 end
 
+post '/signup' do
+    @username = params[:username]
+    @password = params[:password]
+
+    if !Account.get(@username)
+        Account.create(:username => @username, :password => @password, :total_won => 0, :total_lost => 0)
+        session[:signupsuccess] = "ACCOUNT #{@username} SUCCESSFULLY CREATED, PLEASE LOG IN"
+        redirect '/'
+    end
+    session[:signuperror] = "ACCOUNT ALREADY EXISTS, PLEASE TRY AGAIN"
+    redirect '/signup'
+end
+
 get '/login' do
     erb :login
+end
+
+post '/login' do
+    @username = params[:username]
+    @password = params[:password]
+
+    Account.all.each do |account|
+        if (@username == account.username && @password == account.password)
+            session[:user] = Account.get(account.username)
+            redirect '/casino'
+        end
+    end
+    session[:loginerror] = "LOGIN FAILED, PLEASE TRY AGAIN"
+    redirect '/login'
 end
 
 get '/casino' do
@@ -61,30 +88,3 @@ post '/casino' do
     redirect '/casino'
 end
 
-post '/login' do
-    @username = params[:username]
-    @password = params[:password]
-
-    Account.all.each do |account|
-        if (@username == account.username && @password == account.password)
-            session[:user] = Account.get(account.username)
-            redirect '/casino'
-        end
-    end
-    session[:loginerror] = "LOGIN FAILED, PLEASE TRY AGAIN"
-    redirect '/login'
-end
-
-
-post '/signup' do
-    @username = params[:username]
-    @password = params[:password]
-
-    if !Account.get(@username)
-        Account.create(:username => @username, :password => @password, :total_won => 0, :total_lost => 0)
-        session[:signupsuccess] = "ACCOUNT #{@username} SUCCESSFULLY CREATED, PLEASE LOG IN"
-        redirect '/'
-    end
-    session[:signuperror] = "ACCOUNT ALREADY EXISTS, PLEASE TRY AGAIN"
-    redirect '/signup'
-end
