@@ -30,7 +30,7 @@ post '/signup' do
 
     if !Account.get(@username)
         Account.create(:username => @username, :password => @password, :total_won => 0, :total_lost => 0)
-        session[:signupsuccess] = "ACCOUNT #{@username} SUCCESSFULLY CREATED, PLEASE LOG IN"
+        session[:signupsuccess] = "ACCOUNT {#{@username}} SUCCESSFULLY CREATED, PLEASE LOG IN"
         redirect '/'
     end
     session[:signuperror] = "ACCOUNT ALREADY EXISTS, PLEASE TRY AGAIN"
@@ -80,10 +80,10 @@ post '/casino' do
 
     if @guess == @roll
         session[:won] = ((@bet * 2) + session[:won].to_i).to_s
-        session[:winmessage] = "You guessed correct, you win $#{(@bet * 2).to_s}"
+        session[:winmessage] = "The dice landed on #{@roll}. You guessed correctly! You win $#{(@bet * 2).to_s}."
     else
         session[:lost] = (@bet + session[:lost].to_i).to_s
-        session[:lossmessage] = "You guessed incorrect, you lose your bet of $#{(@bet).to_s}"
+        session[:lossmessage] = "The dice landed on #{@roll}. You guessed incorrectly. You lose your bet of $#{(@bet).to_s}."
     end
     redirect '/casino'
 end

@@ -12,10 +12,10 @@
                 <div class="casino-game">
                     <div class="panel-header">Game:</div>
                     <span style="font-size: 20px;"> Place bet on die roll (1 -> 6)<br>Double your money!</span>
-                    <form action="/casino" method="post">
+                    <form action="/casino" autocomplete="off" method="post">
                         <ul class="game-list">
-                            <li>Bet Amount:<input class="bet-input" type="text" name="money" required></li>
-                            <li>Choose Number:<input class="bet-input" type="text" name="side" required></li>
+                            <li>Bet Amount:<input class="bet-input" min="1" type="number" name="money" required></li>
+                            <li>Choose Number:<input class="bet-input" min="1" max="6" type="number" name="side" required></li>
                             <li><input class="bet-button" type="submit" name="submit" value="Place Bet"></li>
                         </ul>
                     </form>
